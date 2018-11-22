@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
+#setting Input output pins for the servo motors.
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(2, GPIO.OUT)
 GPIO.setup(3, GPIO.OUT)
@@ -11,8 +12,7 @@ GPIO.setup(27, GPIO.OUT)
 GPIO.setup(9, GPIO.OUT)
 GPIO.setup(10, GPIO.OUT)
 
-
-
+#naming the servo motors
 L1 = GPIO.PWM(2, 50)
 S1 = GPIO.PWM(3, 50)
 L2 = GPIO.PWM(17, 50)
@@ -104,6 +104,8 @@ try:
     time.sleep(0.015)
     L4.ChangeDutyCycle(0)
     time.sleep(0.015)
+    
+#Operation can be stopped by keyboard interrupt
 except KeyboardInterrupt:
     S1.stop()
     S2.stop()
